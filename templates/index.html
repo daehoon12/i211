@@ -1,0 +1,22 @@
+{% block title %}Good Vibes Yoga!{% endblock %}
+
+{% block content %}<h2>Good Vibes Yoga!</h2>
+
+<link rel="shortcut icon" type="image/x-icon" href="yourLogo.jpg" />
+<h1>Name: Good Vibes Yoga</h1>
+<h2>Description: This homepage explain about the Yoga</h2>
+<a href="classes.html">
+<button>classes</button>
+</a>
+    </head>
+    <div class="px-4 py-5 my-5 text-center">
+        <img class="d-block mx-auto mb-4" src="{{url_for('static', filename = 'logo.png')}}" alt="" width="72" height="57">
+        <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Hello</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a class="btn btn-primary btn-lg" href="{{url_for('classes')}}" role="button">See classes</a>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

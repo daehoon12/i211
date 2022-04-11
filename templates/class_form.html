@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I211: Practice Set 7</title>
+    <!--
+        Practice Set 7
+        Bootstrap elements practice
+        Use Bootstrap's documentation: https://getbootstrap.com/
+        Reference the slides for directions
+    -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</head>
+<header>
+    <!--<nav>
+ <a href="{{url_for('index')}}">Home</a> 
+ &nbsp; | &nbsp; 
+ <a href="{{url_for('about')}}">About</a>
+</nav>-->
+<!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="{{url_for('index')}}">Dino-Site!</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('about')}}">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('add_dino')}}">Add a Dino!</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('dino_quiz')}}">Dino Quiz</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</header>
+<body>
+
+    <div class="container my-5">
+        <div class="col-md-6"></div>
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>    
+    </figure>
+    </div>
+
+    {%if c%} 
+    <div class="container">
+        <h1>Edit class: {{c['name']}}</h1>
+        <form method="POST" name="edit_class">
+        <h2>Date:</h2>
+        <lable for="Date" class="form-label fw-bold">Date</lable>
+        <input name="date" id="Date" class="form-control" value="{{c['date']}}" type="text">
+
+        <h2>Name:</h2>
+        <lable for="Name" class="form-label fw-bold">Name</lable>
+        <input name="name" id="Name" class="form-control" value="{{c['name']}}" type="text">
+
+        <h2>Duration:</h2>
+        <lable for="Duration" class="form-label fw-bold">Duration</lable>
+        <input name="duration" id="Duration" class="form-control" value="{{c['duration']}}" type="text">
+
+        <h2>Type:</h2> 
+        <lable for="Type" class="form-label fw-bold">Type</lable>
+        <input name="type" id="Type" class="form-control" value="{{c['type']}}" type="text">
+        
+        <h2>Level:</h2>
+        <lable for="type" class="form-label fw-bold">Level</lable>
+        <div>
+        <select name="level", id="level">
+          <option value="beginner">beginner</option>
+          <option value="intermediate">intermediate</option>
+          <option value="advanced">advanced</option>
+        </select>
+        </div>
+
+
+        <h2>Trainer:</h2>
+        <lable for="Trainer" class="form-label fw-bold">Trainer</lable>
+        <input name="trainer" id="Trainer" class="form-control" value="{{c['trainer']}}" type="text">
+
+        <h2>Description:</h2>
+        <lable for="Description" class="form-label fw-bold">Description</lable>
+        <input name="description" id="Description" class="form-control" value="{{c['description']}}" type="text">
+    </div>
+        <div class="text-center mt-3">
+            <button type="submit" value="Submit" class="btn btn-primary">Save</button>
+            <button type="reset" value="Reset" class="btn btn-secondary">Reset</button>
+    </div>
+    </form>
+
+
+
+    {%else%}
+        <h1>Create class:</h1>
+            <form method="POST" name="create_class">
+            <lable for="date" class="form-label fw-bold">Date</lable>
+            <input name="date" id="date" class="form-control" placeholder= "YYYY/MM/DD" type="text">
+
+            <lable for="name" class="form-label fw-bold">Class Name</lable>
+            <input name="name" id="name" class="form-control" type="text">
+
+            <lable for="duration" class="form-label fw-bold">Duration</lable>
+            <input name="duration" id="duration" class="form-control" type="text">
+
+            <lable for="type" class="form-label fw-bold">Type</lable>
+            <input name="type" id="type" class="form-control" type="text">
+            
+            <h2>Level:</h2>
+            <lable for="type" class="form-label fw-bold">Level</lable>
+            <div>
+            <select name="level", id="level">
+              <option value="beginner">beginner</option>
+              <option value="intermediate">intermediate</option>
+              <option value="advanced">advanced</option>
+            </select>
+            </div>
+       
+
+
+            <lable for="trainer" class="form-label fw-bold">Trainer</lable>
+            <input name="trainer" id="trainer" class="form-control" type="text">
+
+            <lable for="description" class="form-label fw-bold">Description</lable>
+            <input name="description" id="description" class="form-control" placeholder= "Enter description" type="text">
+        </div>
+            <div class="text-center mt-3">
+            <button type="submit" value="Submit" class="btn btn-primary">Save</button>
+            <button type="reset" value="Reset" class="btn btn-secondary">Reset</button>
+        </div>
+        </form>
+    {%endif%}
+
+</body>
+</html>
+
+
+

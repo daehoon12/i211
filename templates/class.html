@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{%endblock%}</title>
+       <!-- CSS Styles -->
+   <link rel="shortcut icon" href="{{url_for('static', filename='images/favicon.ico')}}">
+   <!-- custom styles -->
+   <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css')}}">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+</head>
+<header>
+  <!--<nav>
+<a href="{{url_for('index')}}">Home</a> 
+&nbsp; | &nbsp; 
+<a href="{{url_for('about')}}">About</a>
+</nav>-->
+<!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<div class="container-fluid">
+    <a class="navbar-brand" href="{{url_for('index')}}">Dino-Site!</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('about')}}">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('add_dino')}}">Add a Dino!</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('dino_quiz')}}">Dino Quiz</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+</header>
+
+
+<body class="d-flex flex-column h-100">  
+   
+
+          <div class="container my-5">
+            <form>
+
+                <h1>{{classes['name']}}</h1>
+                <h2>Date</h2>
+                <p>{{classes['date']}}</p>
+                <h2>Duration</h2>
+                <p>{{classes['duration']}}</p>
+                <h2>Yoga Type</h2>
+                <p>{{classes['type']}}</p>
+                <h2>Level</h2>
+                <p>{{classes['level']}}</p>
+                <h2>Trainer</h2>
+                <p>{{classes['trainer']}}</p>
+                <h2>Description</h2>
+                <p>{{classes['description']}}</p>
+                <div class="text-center mt-3">
+                <a  href="{{url_for('edit_form', class_id=classes['name'])}}"><button type=button class="btn btn-primary">Edit class</button></a>
+                <a  href="{{url_for('delete_form', class_id=classes['name'])}}"><button type=button class="btn btn-secondary">Delete this class</button></a>
+            </form>
+        </div>
+
+
+    <main class="flex-shrink-0">
+        <div class="container">
+ 
+   {% block content %}{% endblock %}
+        </div>
+    </main>
+   <footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+        <span class="text-muted">I211 Practice Flask App &copy; 2021</span>
+    </div>
+    </footer>
+   <!-- JavaScript -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>

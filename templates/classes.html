@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I211: Practice Set 7</title>
+    <!--
+        Practice Set 7
+        Bootstrap elements practice
+        Use Bootstrap's documentation: https://getbootstrap.com/
+        Reference the slides for directions
+    -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</head>
+<header>
+    <!--<nav>
+ <a href="{{url_for('index')}}">Home</a> 
+ &nbsp; | &nbsp; 
+ <a href="{{url_for('about')}}">About</a>
+</nav>-->
+<!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="{{url_for('index')}}">Dino-Site!</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('about')}}">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('add_dino')}}">Add a Dino!</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('dino_quiz')}}">Dino Quiz</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</header>
+<body>
+
+    <div class="container my-5">
+        <div class="col-md-6"></div>
+    
+    <h1>Wow, I've learned so much in I211.</h1>
+    <!-- 'wow-meme.jpg' -->
+    <img src="wow-meme.jpg" class="img-fluid d-block mx-auto my-5" alt="WOW">
+
+    <!-- Add grid: one row with two columns - stacks when less than medium viewport -->
+    <!-- First column: 
+            H2 ('Look at all these things!')
+            Striped table
+            Button ('Get Bootstrap!', https://getbootstrap.com/)
+    -->
+    <!-- Second column:
+            Figure
+            Img ('confidence-graph.webp')
+            Figcaption ('My confidence is going up!')
+    -->
+    
+    <!-- H2 -->
+    <h2>Good Vibes Yoga Classes</h2>
+    
+    <!-- Table -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <b><th scope="col">Date</th></b>
+                  <b><th scope="col">Class Name</th></b>
+                  <b><th scope="col">Duration</th></b>
+                </tr>
+              </thead>
+              <tbody>
+                {% for c in classes %}
+                  <tr>
+                    <td>{{ classes[c]['date'] }}</td>
+                    <th scope="row"><a href="{{url_for('classes', class_id=classes[c]['name'])}}">{{ classes[c]['name'] }}</th>
+                    <td>{{ classes[c]['duration'] }}</td>
+                  </tr>
+                {% endfor %}
+                <!-- <tr>
+                  <td>April 4, 2022</td>
+                  <th scope="row"><a href="{{url_for('classes', class_id=class)}}">Sunrise Stretch</th>
+                  <td>30</td>
+                </tr>
+                <tr>
+                    <td>April 6, 2022</td>
+                    <th scope="row"><a href="{{url_for('classes', class_id=class)}}">Lunchtime Lunges</th>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>April 7, 2022</td>
+                    <th scope="row"><a href="{{url_for('classes', class_id=class)}}">Sunset Stillness</th>
+                    <td>45</td>
+                </tr>
+                <tr>
+                    <td>April 8, 2022</td>
+                    <th scope="row"><a href="{{url_for('classes', class_id=class)}}">Friday Fit</th>
+                    <td>45</td>
+                </tr>   -->
+              </tbody>
+            </table>
+            <p align="right"><a class="btn btn-primary" href="{{url_for('class_form')}}" role="button">Create an class!</a></center>
+            </p>
+            </div>
+      </div>
+      </body>
+            
+       
+        </div>
+    </table>
+    
+    <!-- Button -->
+    <a class="btn btn-primary" href="https://getbootstrap.com/" role="button">Create an class!</a>
+    
+    <!-- Figure / Img / Figcaption -->
+    <figure class="figure">
+        <img src="confidence-graph.webp" class="figure-img img-fluid rounded" alt="graph of my confidence">
+    My confidence is going up!
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>    
+    </figure>
+    </div>
+
+</body>
+</html>
+
+
+
